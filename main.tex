@@ -2,7 +2,7 @@
 % !TeX program = pdflatex
 % !TeX spellcheck = it_IT
 
-\documentclass[binding=0.6cm, a4paper]{unifith}
+\documentclass[binding=0.6cm, a4paper]{unifith/unifith}
 \usepackage{microtype}
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
@@ -24,7 +24,7 @@
 \usepackage{amsthm}
 \usepackage{soul}
 \usepackage{empheq}
-\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
+\usepackage[framed,numbered,autolinebreaks,useliterate]{unifith/mcode}
 \theoremstyle{plain}
 \newtheorem{thm}{Theorem}[chapter]
 \theoremstyle{definition}
@@ -133,24 +133,24 @@ Here are some examples that I think can show the nature of the problem, regardin
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[scale=.55]{waffle.png}
+    \includegraphics[scale=.55]{images/waffle.png}
     \caption{An example of a possible bounce solution to show its boundary conditions. The surface was obtained by a minimization of the action, but the domain boundary curve $\ty_J(\tx)$ was guessed. For physical reasons, here is also drawn a mirrored image (in light blue), but the calculation was only done on the purple simplicial complex. Also, please notice that in the picture the labels "x" and "z" are switched.}
     \label{fig:bounceexample}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
-    \includegraphics[width=.4\textwidth]{download.png}
+    \includegraphics[width=.4\textwidth]{images/download.png}
 \qquad
-    \includegraphics[width=.4\textwidth]{trasferimento (1).png}
+    \includegraphics[width=.4\textwidth]{images/trasferimento (1).png}
 \qquad
-    \includegraphics[width=.4\textwidth]{trasferimento (2).png}
+    \includegraphics[width=.4\textwidth]{images/trasferimento (2).png}
 \qquad
-    \includegraphics[width=.4\textwidth]{trasferimento (3).png}
+    \includegraphics[width=.4\textwidth]{images/trasferimento (3).png}
 \qquad
-    \includegraphics[width=.4\textwidth]{trasferimento.png}
+    \includegraphics[width=.4\textwidth]{images/trasferimento.png}
     \qquad
-    \includegraphics[width=.4\textwidth]{trasferimento (4).png}
+    \includegraphics[width=.4\textwidth]{images/trasferimento (4).png}
 \caption{Examples of the possible integration domains. It is \textit{expected} a simple domain like the one used in figure \ref{fig:bounceexample}, but in principle any curve is good. The colored region is $\Omega[\ty_J]$, and the white one is $\Xi[\ty_J]$. On top of each is the value of the action evaluated on the "fixed-domain-bounce".\label{fig:i}}
 \end{figure}
 
