@@ -1,16 +1,19 @@
 // dbi.fe
 
-#define L 0.6
+#define L 0.3 // actually L/2
 #define rx 0.7
 #define ry 0.5
-#define qq 1-1e-2
-#define mm 1
+#define qq 1-1e-4
+#define f1 (1/pi)^2 * (sin(pi*x2) * (4 + 3 * sin(pi*x2)) + sin(2*pi*x2))
+#define f2 (2/pi)^2 * (cos(pi*x1/2))^4
+#define f3 (tan(pi*x1/2))^2/(1+cos(pi*x1))
+#define f4 (tan(pi*x2/2)+1)^2.5/(1+cos(pi*x2))
 
-quantity action energy modulus mm method facet_general_integral // is DBI action
-scalar_integrand:  2*pi^2 * (tan(pi*x1/2))^2/(1+cos(pi*x1)) * (tan(pi*x2/2)+1)^2.5/(1+cos(pi*x2)) * (sqrt(1 + (1/pi)^2 * (sin(pi*x2) * (4 + 3 * sin(pi*x2)) + sin(2*pi*x2)) * (x4/x6)^2 + (2/pi)^2 * (cos(pi*x1/2))^4 *(x5/x6)^2) - 1)
+quantity action energy method facet_general_integral // is DBI action
+scalar_integrand:  2*pi^2 * f3 * f4 * (sqrt(1 + f1 * (x4/x6)^2 + f2 * (x5/x6)^2) - 1) * x6
 
-quantity falseaction energy modulus mm method facet_general_integral // is false vacuum action
-scalar_integrand: -1 * 2*pi^2 * (tan(pi*x1/2))^2/(1+cos(pi*x1)) * (tan(pi*x2/2)+1)^2.5/(1+cos(pi*x2))
+quantity falseaction energy method facet_general_integral // is false vacuum action
+scalar_integrand: -1 * 2*pi^2 * f3 * f4 * x6
 
 constraint 1
 formula: x=0
@@ -22,11 +25,11 @@ constraint 3
 formula: z=0
 
 vertices
-1  rx 0.0 0.0  constraints 2,3
+1  rx  0.0 0.0  constraints 2,3
 2  qq  0.0   L  fixed
 3  qq  qq    L  fixed
 4  0.0 qq    L  fixed
-5  0.0 ry 0.0  constraints 1,3
+5  0.0 ry  0.0  constraints 1,3
 6  qq  0.0 0.0  fixed
 7  qq  qq  0.0  fixed
 8  0.0 qq  0.0  fixed
@@ -34,8 +37,8 @@ vertices
 
 edges
 1   1 2  constraint 2
-2   2 3  fixed no_refine
-3   3 4  fixed no_refine
+2   2 3  fixed
+3   3 4  fixed
 4   4 5  constraint 1
 5   5 1  constraint 3
 6   6 7  no_refine bare
@@ -45,8 +48,8 @@ edges
 10  8 4  no_refine bare
 11  9 6  no_refine bare
 12  8 9  no_refine bare
-13  5 9  no_refine
-14  9 1  no_refine
+13  5 9  fixed
+14  9 1  fixed
 
 faces
 1    1  2   3   4   5 color 1 tension 0 quantity action // the actual DBI bounce
@@ -54,6 +57,4 @@ faces
 
 
 read
-optimize; m 1e-12; optimize;
-
-gogo :={r; g 5000; m 1e-8; g 5000; r; r; m 1e-7; g 5000; m 1e-6; g 5000}
+optimize; m 1e-10; optimize;

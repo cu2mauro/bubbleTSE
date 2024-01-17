@@ -1,0 +1,28 @@
+// prova
+
+quantity action energy method facet_general_integral 
+scalar_integrand:  -x5/x6 * x6
+
+constraint 1
+formula: x=0
+
+constraint 2
+formula: y=0
+
+constraint 3
+formula: z=0
+
+vertices
+1  1.0 0.0 0.0  fixed
+2  1.0 1.0 2.0  fixed
+3  0.0 1.0 2.0  fixed
+4  0.0 0.0 0.0  fixed
+
+edges
+1   1 2   fixed
+2   2 3   fixed
+3   3 4   fixed
+4   4 1   fixed
+
+faces
+1    1  2   3   4  color 2 tension 0 fixed quantity action
